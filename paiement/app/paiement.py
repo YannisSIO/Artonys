@@ -45,7 +45,7 @@ def getCardFromClientId():
         abort(400)
     
     connection = connect_db()
-    connection[0].execute("select * from creditCard where clientId='" + str(clientId) + "'")
+    connection[0].execute("select * from creditcard where clientId='" + str(clientId) + "'")
     
     tmp = ""
     rows = connection[0].fetchall()
