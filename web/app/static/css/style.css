@@ -1,0 +1,110 @@
+html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}
+html,body{font-family:Verdana,sans-serif;font-size:15px;line-height:1.5}
+html{overflow-x:hidden}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html{
+	height: 100%;
+	line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+	background-position: center;
+	background-size: cover;
+	min-height: 100%;
+}
+
+#login_form h1, #register_form h1, #password_form h1{text-align:center;}
+
+#login_form, #register_form, #password_form {
+  width: 37%;
+  margin: 100px auto;
+  padding-bottom: 30px;
+  border: 1px solid #918274;
+  border-radius: 5px;
+  background: white;
+}
+#login_form input, #register_form input, #password_form input, label{
+  width: 80%;
+  height: 35px;
+  margin: 5px 10%;
+  font-size: 1.1em;
+  padding: 4px;
+  font-size: .9em;
+}
+
+#others{
+	text-align: center;
+	width: 80%;
+	height: 35px;
+	margin: 5px 10%;
+	font-size: 1.1em;
+	padding: 4px;
+	font-size: .9em;
+}
+
+#login_form button, #register_form button, #password_form button{
+	height: 35px;
+	width: 80%;
+	margin: 5px 10%;
+	color: white;
+	background: #3B5998;
+	border: none;
+	border-radius: 5px;
+}
+/*Styling for errors on form*/
+.form_error span{
+	width: 80%;
+	height: 35px;
+	margin: 3px 10%;
+	font-size: 1.1em;
+	color: #D83D5A;
+}
+.form_error input{
+	border: 1px solid #D83D5A;
+}
+
+/*Styling in case no errors on form*/
+.form_success span {
+	width: 80%;
+	height: 35px;
+	margin: 3px 10%;
+	font-size: 1.1em;
+	color: green;
+}
+.form_success input {
+	border: 1px solid green;
+}
+#error_msg {
+	color: red;
+	text-align: center;
+	margin: 10px auto;
+}
+
+.artonys-top,.artonys-bottom{position:fixed;width:100%;z-index:1}.artonys-top{top:0}.artonys-bottom{bottom:0}
+
+.artonys-bar{width:100%;overflow:hidden}.artonys-center .artonys-bar{display:inline-block;width:auto}
+.artonys-bar .artonys-bar-item{padding:8px 16px;float:left;width:auto;border:none;display:block;outline:0}
+.artonys-bar .artonys-dropdown-hover,.artonys-bar .artonys-dropdown-click{position:static;float:left}
+.artonys-bar .artonys-button{white-space:normal}
+.artonys-cell-row:before,.artonys-cell-row:after,.artonys-clear:after,.artonys-clear:before,.artonys-bar:before,.artonys-bar:after{content:"";display:table;clear:both}
+
+.artonys-card,.artonys-card-2{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
+
+.artonys-bar-block .artonys-bar-item{width:100%;display:block;padding:8px 16px;text-align:left;border:none;white-space:normal;float:none;outline:0}
+.artonys-bar-block.artonys-center .artonys-bar-item{text-align:center}.artonys-block{display:block;width:100%}
+@media (max-width:600px){.artonys-modal-content{margin:0 10px;width:auto!important}.artonys-modal{padding-top:30px}
+.artonys-dropdown-hover.artonys-mobile .artonys-dropdown-content,.artonys-dropdown-click.artonys-mobile .artonys-dropdown-content{position:relative}	
+.artonys-hide-small{display:none!important}.artonys-mobile{display:block;width:100%!important}.artonys-bar-item.artonys-mobile,.artonys-dropdown-hover.artonys-mobile,.artonys-dropdown-click.artonys-mobile{text-align:center}
+.artonys-dropdown-hover.artonys-mobile,.artonys-dropdown-hover.artonys-mobile .artonys-btn,.artonys-dropdown-hover.artonys-mobile .artonys-button,.artonys-dropdown-click.artonys-mobile,.artonys-dropdown-click.artonys-mobile .artonys-btn,.artonys-dropdown-click.artonys-mobile .artonys-button{width:100%}}
+
+.artonys-btn,.artonys-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.artonys-btn,.artonys-button{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}   
+.artonys-disabled,.artonys-btn:disabled,.artonys-button:disabled{cursor:not-allowed;opacity:0.3}.artonys-disabled *,:disabled *{pointer-events:none}
+.artonys-dropdown-hover:hover > .artonys-button:first-child,.artonys-dropdown-click:hover > .artonys-button:first-child{background-color:#ccc;color:#000}
+.artonys-bar-block .artonys-dropdown-hover .artonys-button,.artonys-bar-block .artonys-dropdown-click .artonys-button{width:100%;text-align:left;padding:8px 16px}
+.artonys-button:hover{color:#000!important;background-color:#ccc!important}
+
+.artonys-wide{letter-spacing:4px}

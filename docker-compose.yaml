@@ -1,0 +1,161 @@
+version: '3.9'
+services:
+  #Gestion_Produit DB container
+  mysql:
+    container_name: db_gestion_produit
+    hostname: db_gestion_produit
+    image: mysql:5.7
+    command: --init-file /gestion_produit/db/init.sql
+    #command: bash -c "python3 update_image.py"
+    volumes:
+        - ./gestion_produit/db/init.sql:/gestion_produit/db/init.sql    
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=gestion_produit
+      - MYSQL_ROOT_PASSWORD=password
+      
+  #Gestion_Produit API container    
+  api_produit:
+    container_name: api_produit
+    hostname: api_produit
+    depends_on:
+      - mysql
+    build:
+      context: ./gestion_produit/app
+      dockerfile: Dockerfile
+    image: app_produit  
+    ports:
+      - "9006:5000"   
+      
+  #Authentification DB container
+  auth_db:
+    container_name: auth_db
+    hostname: auth_db
+    image: mysql:5.7
+    command: --init-file /authentification/db/authentification.sql
+    volumes:
+        - ./authentification/db/authentification.sql:/authentification/db/authentification.sql  
+    ports:
+      - "33060:33060"
+    environment:
+      - MYSQL_DATABASE=authentification
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      
+  #Authentification API container    
+  api_auth:
+    container_name: api_auth
+    hostname: api_auth
+    depends_on:
+      - auth_db
+    build:
+      context: ./authentification/app
+      dockerfile: Dockerfile
+    image: image_authentification  
+    ports:
+      - "9007:5001"   
+      
+  #Gestion_client DB container
+  db_gestion_client:
+    container_name: db_gestion_client
+    hostname: db_gestion_client
+    image: mysql:5.7
+    command: --init-file /gestion_client/db/gestion_client.sql
+    volumes:
+        - ./gestion_client/db/gestion_client.sql:/gestion_client/db/gestion_client.sql    
+    ports:
+      - "33061:33061"
+    environment:
+      - MYSQL_DATABASE=gestion_client
+      - MYSQL_ROOT_PASSWORD=password
+      
+  #Gestion_client API container    
+  api_client:
+    container_name: api_client
+    hostname: api_client
+    depends_on:
+      - db_gestion_client
+    build:
+      context: ./gestion_client/app
+      dockerfile: Dockerfile
+    image: image_gestion_client 
+    ports:
+      - "9008:5002"     
+      
+   #Historique_commande DB container
+  db_historique_commande:
+    container_name: db_historique_commande
+    hostname: db_historique_commande
+    image: mysql:5.7
+    command: --init-file /historique_commande/db/historique_commande.sql
+    volumes:
+        - ./historique_commande/db/historique_commande.sql:/historique_commande/db/historique_commande.sql    
+    ports:
+      - "33062:33062"
+    environment:
+      - MYSQL_DATABASE=historique_commande
+      - MYSQL_ROOT_PASSWORD=password
+      
+  #Historique_commande API container    
+  api_historique_commande:
+    container_name: api_historique_commande
+    hostname: api_historique_commande
+    depends_on:
+      - db_historique_commande
+    build:
+      context: ./historique_commande/app
+      dockerfile: Dockerfile
+    image: image_historique_commande
+    ports:
+      - "9009:5003"
+
+
+  #Paiement DB container
+  db_paiement:
+    container_name: db_paiement
+    hostname: db_paiement
+    image: mysql:5.7
+    command: --init-file /paiement/db/paiement.sql
+    volumes:
+        - ./paiement/db/paiement.sql:/paiement/db/paiement.sql    
+    ports:
+      - "33063:33063"
+    environment:
+      - MYSQL_DATABASE=paiement
+      - MYSQL_ROOT_PASSWORD=password
+      
+  #Paiement API container    
+  api_paiement:
+    container_name: api_paiement
+    hostname: api_paiement
+    depends_on:
+      - db_paiement
+    build:
+      context: ./paiement/app
+      dockerfile: Dockerfile
+    image: image_paiement
+    ports:
+      - "9010:5004"      
+  
+
+  #Front PHP Container
+  php:
+    image: bitnami/php-fpm:latest
+    ports:
+      - 9000:9000
+    volumes:
+      - ./web/app:/app
+
+  #Front Apache container
+  web:
+    container_name: front
+    hostname: front
+    depends_on:
+      - php   
+    image: 'bitnami/apache:latest'   
+    volumes:
+      - ./web/apache-vhost/front_app.conf:/vhosts/front_app.conf:ro
+      - ./web/app:/app
+    ports:
+      - "850:8080"
+    
